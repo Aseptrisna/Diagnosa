@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Diagnosa-Penyakit</string>
+    <string name="in">Masuk</string>
+    <string name="register">Daftar</string>
+    <string name="sudah">Sudah Punya Akun? Masuk!</string>
+    <string name="belum">Belum Punya Akun? Daftar Sekarang!</string>
+    <string name="email">Email/Telpon</string>
+    <string name="password">Password</string>
+    <string name="nama">Nama</string>
+    <string name="telpon">Nomor Telpon</string>
+    <string name="CopyRight">\u00A9 2011 androidsurya.blogspot.in</string>
+</resources>
