@@ -1,4 +1,5 @@
 package com.omkabel.diagnosa_penyakit.Features;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -17,6 +18,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.omkabel.diagnosa_penyakit.Controller.User;
 import com.omkabel.diagnosa_penyakit.Model.Model_User;
 import com.omkabel.diagnosa_penyakit.R;
+import com.omkabel.diagnosa_penyakit.Session.SharedPrefManager;
 import com.omkabel.diagnosa_penyakit.View.ViewUser;
 
 import java.util.List;
@@ -24,47 +26,42 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class Menu_Register extends AppCompatActivity implements ViewUser {
-    @BindView(R.id.RegisterEmail)
+public class Menu_UpdateProfile extends AppCompatActivity implements ViewUser {
+SharedPrefManager sharedPrefManager;
+ProgressDialog loading;
+User user;
+    @BindView(R.id.UpdateEmail)
     EditText email;
-    @BindView(R.id.RegisterName)
+    @BindView(R.id.UpdateName)
     EditText nama;
-    @BindView(R.id.RegsiterPassword)
+    @BindView(R.id.UpdatePassword)
     EditText password;
-    ProgressDialog loading;
-    User user;
-    @BindView(R.id.FormRegister)
-    CardView Register;
+    @BindView(R.id.FormUpdate)
+    CardView Update;
     Animation toup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu__register);
-        loading=new ProgressDialog(Menu_Register.this);
-        user=new User(this);
+        setContentView(R.layout.activity_menu__update_profile);
         ButterKnife.bind(this);
+        sharedPrefManager=new SharedPrefManager(this);
+        loading=new ProgressDialog(this);
+        user=new User(this);
+        email.setText(sharedPrefManager.getSPEmail());
+        nama.setText(sharedPrefManager.getSPNama());
         toup = AnimationUtils.loadAnimation(this, R.anim.downtoup);
-       Register.setAnimation(toup);
+        Update.setAnimation(toup);
     }
 
-    public void BtnRegister(View view){
+    public  void BtnUpdateProfile(View view){
         Validasi();
 
     }
-    public void BtnLoginRegister(View view){
-        Goto_Login();
-
-    }
-
-    private void Goto_Login() {
-        Intent intent=new Intent(Menu_Register.this,Menu_Login.class);
-        startActivity(intent);
-        finish();
-    }
 
     private void Validasi() {
+        String Id=sharedPrefManager.getSpId();
         String Email=email.getText().toString();
         String Nama=nama.getText().toString();
         String Pass=password.getText().toString();
@@ -75,17 +72,16 @@ public class Menu_Register extends AppCompatActivity implements ViewUser {
             loading.setMessage("Loading......");
             loading.show();
             loading.setCancelable(true);
-            user.UserRegister(Nama,Email,Pass);
+            user.userupdate(Id,Nama,Email,Pass);
 
         }
     }
-
     public void showSnackbar(String message) {
-        Snackbar snackbar = Snackbar.make(Register,""+message , Snackbar.LENGTH_INDEFINITE)
+        Snackbar snackbar = Snackbar.make(Update,""+message , Snackbar.LENGTH_INDEFINITE)
                 .setAction("Ulangi?", new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Snackbar snackbar1 = Snackbar.make(Register, "Silahkan Ulangi", Snackbar.LENGTH_SHORT);
+                        Snackbar snackbar1 = Snackbar.make(Update, "Silahkan Ulangi", Snackbar.LENGTH_SHORT);
                         snackbar1.show();
                         nama.setFocusableInTouchMode(true);
                         email.setFocusableInTouchMode(true);
@@ -95,11 +91,29 @@ public class Menu_Register extends AppCompatActivity implements ViewUser {
         snackbar.show();
     }
     @Override
-    public void Berhasil(String Message){
+    public void onBackPressed(){
+        Goto_Dashboard();
+    }
+
+    private void Goto_Dashboard() {
+        Intent intent=new Intent(Menu_UpdateProfile.this,Menu_Profile.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void Berhasil(String Message) {
         loading.dismiss();
         Toast.makeText(this, ""+Message, Toast.LENGTH_SHORT).show();
-        Goto_Login();
+        Exit();
 
+    }
+
+    private void Exit() {
+        SharedPrefManager sharedPrefManager=new SharedPrefManager(this);
+        sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, false);
+        startActivity(new Intent(this, Menu_Login.class));
+        finish();
     }
 
     @Override
@@ -110,24 +124,14 @@ public class Menu_Register extends AppCompatActivity implements ViewUser {
     @Override
     public void GagalLogin(String Message) {
         loading.dismiss();
-//        Toast.makeText(this, ""+Message, Toast.LENGTH_SHORT).show();
         showSnackbar(Message);
+
     }
 
     @Override
     public void NoInternet(String Message) {
         loading.dismiss();
         showSnackbar(Message);
-//        Toast.makeText(this, ""+Message, Toast.LENGTH_SHORT).show();
-    }
-    @Override
-    public void onBackPressed(){
-        Goto_Dashboard();
-    }
 
-    private void Goto_Dashboard() {
-        Intent intent=new Intent(Menu_Register.this,Menu_Login.class);
-        startActivity(intent);
-        finish();
     }
 }

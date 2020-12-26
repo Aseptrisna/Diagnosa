@@ -28,6 +28,14 @@ public interface ApiServices {
             @Field("email") String email,
             @Field("password") String password
     );
+    @FormUrlEncoded
+    @POST("userupdate.php")
+    Call<ResponseBody> UserUpadate(
+            @Field("id") String id,
+            @Field("nama") String nama,
+            @Field("email") String email,
+            @Field("password") String password
+    );
 
     @FormUrlEncoded
     @POST("SimpanJadwal.php")

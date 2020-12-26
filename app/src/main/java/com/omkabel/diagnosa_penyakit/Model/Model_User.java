@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 public class Model_User implements Serializable {
 
+
 	@SerializedName("id")
 	private String id;
 

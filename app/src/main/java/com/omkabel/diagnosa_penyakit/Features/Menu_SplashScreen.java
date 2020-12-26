@@ -5,8 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -22,21 +29,37 @@ public class Menu_SplashScreen extends AppCompatActivity implements MyRequest {
     Request request;
     @BindView(R.id.Splash_Screen)
     LinearLayout Menu_SplashScreen;
-
+    Animation uptodown, downtoup,Fadein,FadeOut;
+    @BindView(R.id.iconapk)
+    ImageView iconApk;
+    @BindView(R.id.welcome)
+    TextView Welcome;
+    @BindView(R.id.copyright)
+    TextView CopyRight;
+    int waktu_loading=3000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu__splash_screen);
         loading=new ProgressDialog(Menu_SplashScreen.this);
         request=new Request(this);
         ButterKnife.bind(this);
-        loading.setMessage("Mohon Tunggu Sebentar");
-        loading.setCancelable(true);
-        loading.show();
-        Request_Server();
+        uptodown = AnimationUtils.loadAnimation(this, R.anim.uptodown);
+        downtoup = AnimationUtils.loadAnimation(this, R.anim.downtoup);
+        Fadein = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+        FadeOut= AnimationUtils.loadAnimation(this, R.anim.fade_out);
+        iconApk.setAnimation(uptodown);
+        Welcome.setAnimation(downtoup);
+        CopyRight.setAnimation(downtoup);
+        Loading();
     }
 
     private void Request_Server() {
+        loading.setMessage("Mohon Tunggu Sebentar");
+        loading.setCancelable(true);
+        loading.show();
         request.RequestServer();
     }
 
@@ -49,8 +72,9 @@ public class Menu_SplashScreen extends AppCompatActivity implements MyRequest {
     @Override
     public void ServerResponse(String Message){
         loading.dismiss();
-        Toast.makeText(this, ""+Message, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, ""+Message, Toast.LENGTH_SHORT).show();
         Goto_Login();
+//        Loading();
     }
     @Override
     public void ServerNoResponse(String Message){
@@ -68,10 +92,20 @@ public class Menu_SplashScreen extends AppCompatActivity implements MyRequest {
                 .setAction("Coba Kembali?", new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        loading.setMessage("Mohon Tunggu Sebentar");
+                        loading.setCancelable(true);
+                        loading.show();
                        request.RequestServer();
                     }
                 });
         snackbar.show();
     }
-
+    public void Loading(){
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Request_Server();
+            }
+        },waktu_loading);
+    }
 }

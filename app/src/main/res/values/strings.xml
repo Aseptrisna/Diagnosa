@@ -8,5 +8,13 @@
     <string name="password">Password</string>
     <string name="nama">Nama</string>
     <string name="telpon">Nomor Telpon</string>
+    <string name="Diagnosa">Diagnosa</string>
+    <string name="data">Penyakit</string>
+    <string name="Profile">Profile</string>
+    <string name="about">About</string>
+    <string name="out">Logout</string>
+    <string name="update">Update</string>
+    <string name="profile">Menu Profile</string>
+    <string name="tentang">Tentang Aplikasi</string>
     <string name="CopyRight">\u00A9 2011 androidsurya.blogspot.in</string>
 </resources>

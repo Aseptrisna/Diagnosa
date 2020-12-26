@@ -116,4 +116,55 @@ public class User {
 
 
     }
+
+
+    public void userupdate( String id,String nama,String email,String pass){
+        retrofit2.Call<ResponseBody> call = InitRetrofit.getInstance().getApi().UserUpadate(id,nama,email,pass);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()){
+                    try {
+                        JSONObject jsonRESULTS = new JSONObject(response.body().string());
+                        if (jsonRESULTS.getString("status").equals("true")){
+                            Log.d("response api", jsonRESULTS.toString());
+                            String Message=jsonRESULTS.getString("message");
+                            viewUser.Berhasil(Message);
+                        } else {
+                            try {
+                                Log.d("response api", jsonRESULTS.toString());
+                                String Message=jsonRESULTS.getString("message");
+                                viewUser.GagalLogin(Message);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        String error_message ="Ada Masalah Internet";
+                        viewUser.NoInternet(error_message);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.v("debug", "onFailure: ERROR > " + t.toString());
+                try {
+                    String error_message ="Server Tidak Merespon";
+                    viewUser.NoInternet(error_message);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+    }
+
 }

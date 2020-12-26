@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -43,6 +45,7 @@ public class Menu_Login extends AppCompatActivity implements ViewUser {
     ProgressDialog  loading;
     SharedPrefManager sharedPrefManager;
     User user;
+    Animation uptodown, downtoup,Fadein,FadeOut;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -54,7 +57,11 @@ public class Menu_Login extends AppCompatActivity implements ViewUser {
         user=new User(this);
         sharedPrefManager=new SharedPrefManager(Menu_Login.this);
         Session();
-
+        uptodown = AnimationUtils.loadAnimation(this, R.anim.to_left);
+        downtoup = AnimationUtils.loadAnimation(this, R.anim.to_right);
+        Fadein = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+        FadeOut= AnimationUtils.loadAnimation(this, R.anim.fade_out);
+        FromLogin.setAnimation(downtoup);
     }
 
     private void Session() {

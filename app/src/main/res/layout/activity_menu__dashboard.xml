@@ -1,9 +1,313 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Features.Menu_Dashboard">
+    android:background="@color/mainTextDark"
+    android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_gravity="center"
+        android:id="@+id/MenuDashboar"
+        android:layout_width="match_parent"
+        android:layout_marginTop="1.0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="match_parent"
+        android:background="@color/mainTextDark"
+        android:padding="20dp">
+        <LinearLayout
+            android:id="@+id/linearLayoutkwh"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="20dp"
+                android:layout_width="0dp"
+                app:cardElevation="10dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                android:padding="20dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/cardview">
+
+                    <ImageView
+                        android:onClick="Diagnosa"
+                        android:id="@+id/iconkwh"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="20dp"
+                        app:srcCompat="@drawable/ic_baseline"
+                        tools:ignore="VectorDrawableCompat" />
+
+                    <TextView
+                        android:layout_marginBottom="20dp"
+                        android:id="@+id/judulkwh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/iconkwh"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/Diagnosa"
+                        android:textColor="@color/c_black"
+                        android:textSize="20sp" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="20dp"
+                android:layout_width="0dp"
+                app:cardElevation="10dp"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:layout_weight="1">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/cardview">
+
+                    <ImageView
+                        android:onClick="Penyakit"
+                        android:id="@+id/iconwatt"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="20dp"
+                        app:srcCompat="@drawable/ic_data"
+                        tools:ignore="VectorDrawableCompat" />
+
+                    <TextView
+                        android:id="@+id/judulwatt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/iconwatt"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/data"
+                        android:textColor="@color/c_black"
+                        android:textSize="20sp" />
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutvoltage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutkwh">
+
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="20dp"
+                android:layout_width="0dp"
+                app:cardElevation="10dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:layout_weight="1">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/cardview">
+
+                    <ImageView
+                        android:onClick="Profile"
+                        android:id="@+id/iconvoltage"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="20dp"
+                        app:srcCompat="@drawable/ic_name"
+                        tools:ignore="VectorDrawableCompat"/>
+
+                    <TextView
+                        android:layout_marginBottom="20dp"
+                        android:id="@+id/judulvoltage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/iconvoltage"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/Profile"
+                        android:textColor="@color/c_black"
+                        android:textSize="20sp" />
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="20dp"
+                android:layout_width="0dp"
+                app:cardElevation="10dp"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:layout_weight="1">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/cardview">
+
+                    <ImageView
+                        android:onClick="About"
+                        android:id="@+id/iconampere"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="20dp"
+                        app:srcCompat="@drawable/ic_info"
+                        tools:ignore="VectorDrawableCompat" />
+
+                    <TextView
+                        android:id="@+id/judulampere"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/iconampere"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/about"
+                        android:textColor="@color/c_black"
+                        android:textSize="20sp" />
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/Buttom"
+            app:cardCornerRadius="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="230sp"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutvoltage"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="53dp"
+            android:background="@color/c_white">
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+                <TextView
+                    android:text="Selamat Datang"
+                    android:textSize="25dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textColor="@color/mainTextDark"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"/>
+                <LinearLayout
+                    android:layout_marginTop="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Nama"
+                        android:textStyle="normal"
+                        android:textColor="@color/cardview_dark_background"
+                        android:textSize="20dp"
+                        android:layout_width="70dp"
+                        android:layout_height="30dp"/>
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:text=":"
+                        android:textStyle="normal"
+                        android:textColor="@color/cardview_dark_background"
+                        android:textSize="20dp"
+                        android:layout_width="10dp"
+                        android:layout_height="30dp"/>
+                    <TextView
+                        android:id="@+id/nama"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginRight="0dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Asep Trisna Setiawan"
+                        android:textStyle="normal"
+                        android:textColor="@color/cardview_dark_background"
+                        android:textSize="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Email"
+                        android:textStyle="normal"
+                        android:textColor="@color/cardview_dark_background"
+                        android:textSize="20dp"
+                        android:layout_width="70dp"
+                        android:layout_height="30dp"/>
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:text=":"
+                        android:textStyle="normal"
+                        android:textColor="@color/cardview_dark_background"
+                        android:textSize="20dp"
+                        android:layout_width="10dp"
+                        android:layout_height="30dp"/>
+                    <TextView
+                        android:id="@+id/email"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginRight="0dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Asep.Iot@ubl.ac.id"
+                        android:textStyle="normal"
+                        android:textColor="@color/cardview_dark_background"
+                        android:textSize="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <LinearLayout
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/Buttom"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            tools:ignore="MissingConstraints">
+            <TextView
+                android:layout_marginRight="90dp"
+                android:layout_marginLeft="90dp"
+                android:layout_gravity="center"
+                app:layout_constraintTop_toBottomOf="@+id/Buttom"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Copyright \u00A9 Tugas Akhir"
+                android:textSize="17dp"
+                tools:ignore="MissingConstraints" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
