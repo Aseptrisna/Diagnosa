@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Diagnosa-Penyakit</string>
+    <string name="app_name">E-Aquarium</string>
     <string name="in">Masuk</string>
     <string name="register">Daftar</string>
     <string name="sudah">Sudah Punya Akun? Masuk!</string>
@@ -8,11 +8,12 @@
     <string name="password">Password</string>
     <string name="nama">Nama</string>
     <string name="telpon">Nomor Telpon</string>
-    <string name="Diagnosa">Diagnosa</string>
-    <string name="data">Penyakit</string>
+    <string name="Diagnosa">Monitoring</string>
+    <string name="data">History</string>
     <string name="Profile">Profile</string>
     <string name="about">About</string>
     <string name="out">Logout</string>
+    <string name="daftar">Daftar</string>
     <string name="update">Update</string>
     <string name="profile">Menu Profile</string>
     <string name="tentang">Tentang Aplikasi</string>

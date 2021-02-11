@@ -27,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="@string/in"
+                android:text="@string/update"
                 android:textColor="@color/mainTextDark"
                 android:textSize="20sp"
                 android:textStyle="bold" />

@@ -1,14 +1,120 @@
 package com.omkabel.diagnosa_penyakit.Features;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.TextView;
 
-public class Menu_Monitoring extends AppCompatActivity {
+import com.omkabel.diagnosa_penyakit.R;
+import com.omkabel.diagnosa_penyakit.Server.Koneksi_RMQ;
+import com.omkabel.diagnosa_penyakit.Server.MyRmq;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class Menu_Monitoring extends AppCompatActivity implements MyRmq {
+    @BindView(R.id.valuesuhu)
+    TextView Suhu;
+    @BindView(R.id.valuejam)
+    TextView Jam;
+    @BindView(R.id.valuedate)
+    TextView Tanggal ;
+    @BindView(R.id.valueBtnLampu)
+    TextView Lampu;
+    @BindView(R.id.valueButtonKipas)
+    TextView Kipas;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu__monitoring2);
+        setContentView(R.layout.activity_menu__monitoring);
+        ButterKnife.bind(this);
+        getsuhu();
+    }
+    private void getsuhu() {
+        Koneksi_RMQ rmq = new Koneksi_RMQ(this);
+        rmq.setupConnectionFactory();
+        final Handler incomingMessageHandler = new Handler() {
+            @SuppressLint("HandlerLeak")
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void handleMessage(Message msg) {
+                String message = msg.getData().getString("msg");
+                Log.d("RMQMessage", message);
+                String s = message.toString();
+//                Suhu.setText(s);
+                try {
+                    JSONObject jsonRESULTS = new JSONObject(s);
+                    String mac = jsonRESULTS.getString("mac");
+                    String suhu = jsonRESULTS.getString("suhu");
+                    String lampu = jsonRESULTS.getString("lampu");
+                    String kipas = jsonRESULTS.getString("kipas");
+                    Suhu.setText(suhu + "°C");
+                    Kipas.setText(kipas);
+                    Lampu.setText(lampu);
+                    getjam();
+                    gettanggal();
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        Thread subscribeThread = new Thread();
+        String data = "dani";
+        rmq.subscribe(incomingMessageHandler, subscribeThread, data, data);
+
+    }
+    private void getjam(){
+        DateFormat jam = new SimpleDateFormat("dd-MM-yyyy");
+        Date Formatjam = new Date();
+        Tanggal.setText(jam.format(Formatjam));
+    }
+
+    private void gettanggal() {
+        DateFormat dateFormattanggal = new SimpleDateFormat("HH:mm:ss");
+        Date tanggal = new Date();
+        Jam.setText(dateFormattanggal.format(tanggal));
+    }
+
+    @Override
+    public void onBackPressed(){
+        Goto_Dashboard();
+    }
+
+    private void Goto_Dashboard() {
+        Intent intent=new Intent(Menu_Monitoring.this,Menu_Dashboard.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void Berhasil(String message) {
+
+    }
+
+    @Override
+    public void Gagal() {
+
     }
 }

@@ -27,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="@string/in"
+                android:text="@string/daftar"
                 android:textColor="@color/mainTextDark"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -124,7 +124,7 @@
                 android:layout_marginTop="30dp"
                 android:backgroundTint="@color/mainTextDark"
                 android:background="@drawable/m_button"
-                android:text="@string/in"
+                android:text="@string/daftar"
                 android:textAllCaps="false"
                 android:textColor="@color/c_white"
                 android:textSize="17sp" />

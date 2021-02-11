@@ -9,7 +9,7 @@
         android:layout_gravity="center"
         android:id="@+id/MenuDashboar"
         android:layout_width="match_parent"
-        android:layout_marginTop="1.0dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
         android:layout_height="match_parent"
         android:background="@color/mainTextDark"
@@ -46,7 +46,7 @@
                         android:layout_height="75dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="20dp"
-                        app:srcCompat="@drawable/ic_baseline"
+                        app:srcCompat="@drawable/ic_monitoring"
                         tools:ignore="VectorDrawableCompat" />
 
                     <TextView
@@ -85,7 +85,7 @@
                         android:layout_height="75dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="20dp"
-                        app:srcCompat="@drawable/ic_data"
+                        app:srcCompat="@drawable/ic_history"
                         tools:ignore="VectorDrawableCompat" />
 
                     <TextView
@@ -191,6 +191,13 @@
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
+<!--        <HorizontalScrollView-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/linearLayoutvoltage"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            tools:ignore="MissingConstraints">-->
+<!--            -->
+<!--        </HorizontalScrollView>-->
 
         <androidx.cardview.widget.CardView
             android:id="@+id/Buttom"
@@ -221,14 +228,14 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <TextView
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="5.0dp"
                         android:layout_marginTop="5dp"
                         android:text="Nama"
                         android:textStyle="normal"
                         android:textColor="@color/cardview_dark_background"
-                        android:textSize="20dp"
-                        android:layout_width="70dp"
+                        android:textSize="17dp"
+                        android:layout_width="50dp"
                         android:layout_height="30dp"/>
                     <TextView
                         android:layout_marginTop="5dp"
@@ -246,7 +253,7 @@
                         android:text="Asep Trisna Setiawan"
                         android:textStyle="normal"
                         android:textColor="@color/cardview_dark_background"
-                        android:textSize="20dp"
+                        android:textSize="17dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
@@ -255,14 +262,14 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <TextView
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="5.0dp"
                         android:layout_marginTop="5dp"
                         android:text="Email"
                         android:textStyle="normal"
                         android:textColor="@color/cardview_dark_background"
-                        android:textSize="20dp"
-                        android:layout_width="70dp"
+                        android:textSize="17dp"
+                        android:layout_width="50dp"
                         android:layout_height="30dp"/>
                     <TextView
                         android:layout_marginTop="5dp"
@@ -280,7 +287,7 @@
                         android:text="Asep.Iot@ubl.ac.id"
                         android:textStyle="normal"
                         android:textColor="@color/cardview_dark_background"
-                        android:textSize="20dp"
+                        android:textSize="16dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
@@ -293,8 +300,8 @@
             android:layout_height="50dp"
             tools:ignore="MissingConstraints">
             <TextView
-                android:layout_marginRight="90dp"
-                android:layout_marginLeft="90dp"
+                android:layout_marginRight="70dp"
+                android:layout_marginLeft="70dp"
                 android:layout_gravity="center"
                 app:layout_constraintTop_toBottomOf="@+id/Buttom"
                 android:textStyle="bold"
@@ -303,7 +310,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Copyright \u00A9 Tugas Akhir"
-                android:textSize="17dp"
+                android:textSize="15dp"
                 tools:ignore="MissingConstraints" />
 
         </LinearLayout>

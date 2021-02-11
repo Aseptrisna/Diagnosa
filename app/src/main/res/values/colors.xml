@@ -16,4 +16,7 @@
     <color name="startblue">#008080</color>
     <color name="endblue">#2F4F4F</color>
     <color name="graylight">#556B2F</color>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#008577</color>
 </resources>

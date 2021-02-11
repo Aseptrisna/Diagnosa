@@ -24,7 +24,7 @@ public class Menu_About extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu__about);
         ButterKnife.bind(this);
-        TentangAplikasi.setText("Aplikasi Diagnosa penyakit anak berbasis Android");
+        TentangAplikasi.setText("Aplikasi Monitoring Aquarium");
     }
     @Override
     public void onBackPressed(){

@@ -11,6 +11,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.omkabel.diagnosa_penyakit.R;
 import com.omkabel.diagnosa_penyakit.Session.SharedPrefManager;
@@ -36,8 +37,10 @@ public class Menu_Profile extends AppCompatActivity {
         setContentView(R.layout.activity_menu__profile);
         ButterKnife.bind(Menu_Profile.this);
         sharedPrefManager=new SharedPrefManager(this);
-        Email.setText(sharedPrefManager.getSPEmail());
+        String email=sharedPrefManager.getSPEmail();
+        Email.setText(email);
         Nama.setText(sharedPrefManager.getSPNama());
+//        Toast.makeText(this,sharedPrefManager.getSPEmail(), Toast.LENGTH_SHORT).show();
         toRight = AnimationUtils.loadAnimation(this, R.anim.to_right);
         Profile.setAnimation(toRight);
     }

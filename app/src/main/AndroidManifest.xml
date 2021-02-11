@@ -12,7 +12,9 @@
         android:roundIcon="@drawable/ic_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.DiagnosaPenyakit">
-        <activity android:name=".Features.Menu_UpdateProfile"></activity>
+        <activity android:name=".Features.Menu_History"></activity>
+        <activity android:name=".Features.Menu_Monitoring" />
+        <activity android:name=".Features.Menu_UpdateProfile" />
         <activity android:name=".Features.Menu_ListPenyakit" />
         <activity android:name=".Features.Menu_DiagNosa" />
         <activity android:name=".Features.Menu_About" />

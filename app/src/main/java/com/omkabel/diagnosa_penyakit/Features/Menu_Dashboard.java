@@ -49,7 +49,7 @@ public class Menu_Dashboard extends AppCompatActivity {
         Nama.setText(sharedPrefManager.getSPNama());
     }
     public void Diagnosa(View v){
-        Intent intent=new Intent(Menu_Dashboard.this,Menu_DiagNosa.class);
+        Intent intent=new Intent(Menu_Dashboard.this,Menu_Monitoring.class);
         startActivity(intent);
         finish();
     }
@@ -64,7 +64,7 @@ public class Menu_Dashboard extends AppCompatActivity {
         finish();
     }
     public void Penyakit (View v){
-        Intent intent=new Intent(Menu_Dashboard.this,Menu_ListPenyakit.class);
+        Intent intent=new Intent(Menu_Dashboard.this,Menu_History.class);
         startActivity(intent);
         finish();
     }

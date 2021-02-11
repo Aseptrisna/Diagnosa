@@ -1,6 +1,7 @@
 package com.omkabel.diagnosa_penyakit.Server;
 
 import com.omkabel.diagnosa_penyakit.Response.Response_Login;
+import com.omkabel.diagnosa_penyakit.Response.Response_Sensor;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -52,8 +53,8 @@ public interface ApiServices {
             @Field("imei") String Imai,
             @Field("package") String Package
     );
-////    @GET("TampilSoal.php")
-////    Call<Response_Soal> tampil_soal();
+    @GET("getsensor.php")
+    Call<Response_Sensor> getsensor();
 ////    @GET("getJawaban.php")
 ////    Call<Response_Soal> tampil_pilihan();
 //
