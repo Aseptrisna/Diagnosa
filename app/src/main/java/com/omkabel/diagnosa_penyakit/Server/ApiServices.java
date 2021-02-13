@@ -107,4 +107,13 @@ public interface ApiServices {
             @Field("nama") String nama
     );
 
+    @GET("lampu.php/{light}")
+    Call<ResponseBody> Lampu(
+            @Query("light") String light
+            );
+    @GET("kipas.php/{light}")
+    Call<ResponseBody> Kipas(
+            @Query("light") String light
+    );
+
 }
