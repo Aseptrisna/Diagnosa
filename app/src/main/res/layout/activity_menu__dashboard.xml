@@ -173,7 +173,7 @@
                         android:layout_height="75dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="20dp"
-                        app:srcCompat="@drawable/ic_info"
+                        app:srcCompat="@drawable/ic_baseline_settings_24"
                         tools:ignore="VectorDrawableCompat" />
 
                     <TextView

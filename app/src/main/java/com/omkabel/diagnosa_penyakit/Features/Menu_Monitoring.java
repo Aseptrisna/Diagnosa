@@ -23,6 +23,7 @@ import com.omkabel.diagnosa_penyakit.R;
 import com.omkabel.diagnosa_penyakit.Server.InitRetrofit;
 import com.omkabel.diagnosa_penyakit.Server.Koneksi_RMQ;
 import com.omkabel.diagnosa_penyakit.Server.MyRmq;
+import com.omkabel.diagnosa_penyakit.Session.SharedPrefManager;
 import com.omkabel.diagnosa_penyakit.View.MyKontol;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
@@ -66,6 +67,7 @@ public class Menu_Monitoring extends AppCompatActivity implements MyRmq, MyKonto
     private String TAG = "data";
     ProgressDialog Loading;
     Kontrol kontrol;
+    SharedPrefManager sharedPrefManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -73,6 +75,7 @@ public class Menu_Monitoring extends AppCompatActivity implements MyRmq, MyKonto
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu__monitoring);
         ButterKnife.bind(this);
+        sharedPrefManager=new SharedPrefManager(this);
         Loading=new ProgressDialog(Menu_Monitoring.this);
         kontrol=new Kontrol(Menu_Monitoring.this);
 //        request=new Request(Menu_Monitoring.this);
@@ -133,6 +136,33 @@ public class Menu_Monitoring extends AppCompatActivity implements MyRmq, MyKonto
                     String lampu = jsonRESULTS.getString("lampu");
                     String kipas = jsonRESULTS.getString("kipas");
                     Suhu.setText(suhu + "°C");
+//                    String data=suhu.substring(0,4);
+//                    try {
+//
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+                    String max=sharedPrefManager.getSP_max();
+                    String min=sharedPrefManager.getSP_min();
+                    float SuhuMax=Float.parseFloat(max);
+                    float SuhuMin=Float.parseFloat(min);
+                    float dataSuhu=Float.parseFloat(suhu);
+                    Log.d("min", String.valueOf(SuhuMin));
+                    Log.v("max", String.valueOf(SuhuMax));
+                    Log.v("suhu", String.valueOf(dataSuhu));
+
+
+                    if (dataSuhu > SuhuMax){
+                        kontrol.Kontrol_Kipas("on");
+                        kontrol.Kontrol_Lampu("off");
+                    }else if(dataSuhu < SuhuMin){
+                        kontrol.Kontrol_Kipas("off");
+                        kontrol.Kontrol_Lampu("on");
+
+                    }else{
+                        kontrol.Kontrol_Kipas("off");
+                        kontrol.Kontrol_Lampu("off");
+                    }
                     Kipas.setText(kipas);
                     Lampu.setText(lampu);
                     getjam();

@@ -19,6 +19,8 @@ public class SharedPrefManager {
     public static final String SP_Mac = "mac";
     public static final String SP_Prov = "prov";
     public static final String SP_Kab = "kab";
+    public static final String SP_max = "max";
+    public static final String SP_min = "min";
     public static final String SP_device_channel ="device_channel";
     public static final String SP_Status = "status";
     public static final String SP_SUDAH_LOGIN = "SudahLogin";
@@ -75,6 +77,12 @@ public class SharedPrefManager {
     }
     public String getSP_Status(){
         return sp.getString(SP_Status, "");
+    }
+    public String getSP_max(){
+        return sp.getString(SP_max, "");
+    }
+    public String getSP_min(){
+        return sp.getString(SP_min, "");
     }
     public String getSP_device_channel(){
         return sp.getString(SP_device_channel, "");

@@ -59,7 +59,7 @@ public class Menu_Dashboard extends AppCompatActivity {
         finish();
     }
     public void About(View v){
-        Intent intent=new Intent(Menu_Dashboard.this,Menu_About.class);
+        Intent intent=new Intent(Menu_Dashboard.this,Menu_Setting.class);
         startActivity(intent);
         finish();
     }
