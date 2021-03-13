@@ -62,6 +62,10 @@ public class Menu_Monitoring extends AppCompatActivity implements MyRmq, MyKonto
     Button LampuOn;
     @BindView(R.id.btnLampuoff)
     Button LampuOff;
+    @BindView(R.id.Suhu_Max)
+    TextView Max_Suhu;
+    @BindView(R.id.Suhu_Min)
+    TextView Min_Suhu;
     private OkHttpClient client;
     private Request request;
     private String TAG = "data";
@@ -78,6 +82,8 @@ public class Menu_Monitoring extends AppCompatActivity implements MyRmq, MyKonto
         sharedPrefManager=new SharedPrefManager(this);
         Loading=new ProgressDialog(Menu_Monitoring.this);
         kontrol=new Kontrol(Menu_Monitoring.this);
+        Max_Suhu.setText("suhu mx: "+sharedPrefManager.getSP_max()+"");
+        Min_Suhu.setText("suhu min: "+sharedPrefManager.getSP_min()+"");
 //        request=new Request(Menu_Monitoring.this);
         getsuhu();
         KipasOn.setOnClickListener(new View.OnClickListener() {
@@ -153,15 +159,15 @@ public class Menu_Monitoring extends AppCompatActivity implements MyRmq, MyKonto
 
 
                     if (dataSuhu > SuhuMax){
-                        kontrol.Kontrol_Kipas("on");
-                        kontrol.Kontrol_Lampu("off");
+                        kontrol.Kontrol_Kipas1("on");
+                        kontrol.Kontrol_Lampu1("off");
                     }else if(dataSuhu < SuhuMin){
-                        kontrol.Kontrol_Kipas("off");
-                        kontrol.Kontrol_Lampu("on");
+                        kontrol.Kontrol_Kipas1("off");
+                        kontrol.Kontrol_Lampu1("on");
 
                     }else{
-                        kontrol.Kontrol_Kipas("off");
-                        kontrol.Kontrol_Lampu("off");
+                        kontrol.Kontrol_Kipas1("off");
+                        kontrol.Kontrol_Lampu1("off");
                     }
                     Kipas.setText(kipas);
                     Lampu.setText(lampu);
@@ -219,6 +225,15 @@ public class Menu_Monitoring extends AppCompatActivity implements MyRmq, MyKonto
 
     private void lampu(String Message){
         kontrol.Kontrol_Lampu(Message);
+
+    }
+    private void kipas1(String Message){
+        kontrol.Kontrol_Kipas1(Message);
+
+    }
+
+    private void lampu1(String Message){
+        kontrol.Kontrol_Lampu1(Message);
 
     }
     @Override

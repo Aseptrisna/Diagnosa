@@ -116,8 +116,6 @@ public class User {
 
 
     }
-
-
     public void userupdate( String id,String nama,String email,String pass){
         retrofit2.Call<ResponseBody> call = InitRetrofit.getInstance().getApi().UserUpadate(id,nama,email,pass);
         call.enqueue(new Callback<ResponseBody>() {
