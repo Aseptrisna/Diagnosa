@@ -79,13 +79,14 @@ public class Menu_Monitoring extends AppCompatActivity implements MyRmq, MyKonto
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu__monitoring);
         ButterKnife.bind(this);
+        getsuhu();
         sharedPrefManager=new SharedPrefManager(this);
         Loading=new ProgressDialog(Menu_Monitoring.this);
         kontrol=new Kontrol(Menu_Monitoring.this);
         Max_Suhu.setText("suhu mx: "+sharedPrefManager.getSP_max()+"");
         Min_Suhu.setText("suhu min: "+sharedPrefManager.getSP_min()+"");
 //        request=new Request(Menu_Monitoring.this);
-        getsuhu();
+
         KipasOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
